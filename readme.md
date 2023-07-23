@@ -1,8 +1,10 @@
 # a = bのテスター
 ## 使い方
- code内にa=bのコードを書く
+code内にa=bのコードを書く
 
-`python3 ./compiler.py <filename> <input> [-v]`
+ファイルのある場所で
+`python3 ./compiler.py <filename> <input> [-v] [--maxloop] <maxloop>`
 
 option
  -v: verbose mode
+ --maxloop: maxloop

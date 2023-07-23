@@ -72,7 +72,7 @@ class ABCompiler:
   def read_file(self):
     commands: List[ABCommand] = []
     line = 0
-    with open(f"{os.getcwd()}/src/code/{self.filename}.ab", 'r') as file:
+    with open(f"{os.getcwd()}/code/{self.filename}.ab", 'r') as file:
       while command := file.readline():
         line += 1
         commands.append(ABCommand(command, line))
@@ -154,10 +154,11 @@ if __name__ == "__main__":
   parser.add_argument("filename", help="filename")
   parser.add_argument("input", help="input")
   parser.add_argument("-v", "--verbose", help="verbose", action="store_true")
+  parser.add_argument("--maxloop", help="maxloop", type=int, default=1000)
   
   args = parser.parse_args()
   
-  compiler = ABCompiler(args.filename)
+  compiler = ABCompiler(args.filename, args.maxloop)
   compiler.run(args.input, args.verbose)
     
     
