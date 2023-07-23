@@ -62,14 +62,14 @@ class ABCommand:
   def raiseError(self, reason = "unknown"):
     raise ValueError(f"Invalid command by {reason} at line: {self.line}")
 
-class ABCompiler:
+class ABInterpreter:
   
   def __init__(self, filename: str, MAXLOOP: int = 100000):
     self.filename = filename
-    self.commands: List[ABCommand] = self.read_file()
+    self.commands: List[ABCommand] = self.readFile()
     self.MAXLOOP = MAXLOOP
   
-  def read_file(self):
+  def readFile(self):
     commands: List[ABCommand] = []
     line = 0
     with open(f"{os.getcwd()}/code/{self.filename}.ab", 'r') as file:
@@ -160,7 +160,7 @@ if __name__ == "__main__":
   
   args = parser.parse_args()
   
-  compiler = ABCompiler(args.filename, args.maxloop)
+  compiler = ABInterpreter(args.filename, args.maxloop)
   compiler.run(args.input, args.verbose)
     
     
