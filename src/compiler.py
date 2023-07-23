@@ -75,6 +75,8 @@ class ABCompiler:
     with open(f"{os.getcwd()}/code/{self.filename}.ab", 'r') as file:
       while command := file.readline():
         line += 1
+        if (re.match(r"^#", command)):
+          continue
         commands.append(ABCommand(command, line))
     return commands
 
