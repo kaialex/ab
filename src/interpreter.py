@@ -21,8 +21,6 @@ class ABCommand:
       self.raiseError("equal sign")
     
     for index, splitdata in enumerate(data):
-      # 改行消す
-      splitdata = splitdata.replace("\n", "")
       detail = self.getDetail(splitdata, index_key[index])
       if not detail["valid"]:
         self.raiseError("")
@@ -37,7 +35,6 @@ class ABCommand:
     
     if (command == ""):
       return {"valid": True, "content": "", "reserved": ""}
-    
     
     if (leftorright == "left"):
       fullcheck =re.compile(r"(\((once|start|end)\))?(.*)")
